@@ -20,7 +20,9 @@ Follow the prompts to configure the VMware REST API username and password.
 git clone <repository-url>
 cd VMWareRPC
 ```
+
 ### 3. Create virtual environment
+
 Using venv
 
 ```sh

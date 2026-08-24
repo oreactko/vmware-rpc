@@ -8,7 +8,7 @@ A Discord Rich Presence for VMware Workstation.
 
 Open a terminal in the VMware Workstation installation directory and run:
 
-```cmd
+```sh
 vmrest -C
 ```
 
@@ -16,26 +16,40 @@ Follow the prompts to configure the VMware REST API username and password.
 
 ### 2. Clone the repository
 
-```cmd
+```sh
 git clone <repository-url>
 cd VMWareRPC
 ```
+### 3. Create virtual environment
+Using venv
 
-### 3. Install dependencies
+```sh
+python3.13 -m venv .venv
+.\.venv\Scripts\activate
+```
+
+If you use `uv`:
+
+```sh
+uv venv --python 3.13
+.\.venv\Scripts\activate
+```
+
+### 4. Install dependencies
 
 Using pip:
 
-```cmd
+```sh
 pip install .
 ```
 
 Or, if you use `uv`:
 
-```cmd
+```sh
 uv sync
 ```
 
-### 4. Set credentials
+### 5. Set credentials
 
 Set the following environment variables:
 
@@ -44,14 +58,14 @@ VMREST_USERNAME=<your-username>
 VMREST_PASSWORD=<your-password>
 ```
 
-### 5. Run
+### 6. Run
 
-```cmd
+```sh
 python main.py
 ```
 
 If you're using `uv`:
 
-```cmd
+```sh
 uv run main.py
 ```

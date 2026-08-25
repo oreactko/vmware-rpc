@@ -1,7 +1,7 @@
 [project]
 name = "vmware-rpc"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Discord RPC for VMWare"
 readme = "README.md"
 authors = [
     { name = "OReactko", email = "son682014@gmail.com" }

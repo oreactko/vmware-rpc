@@ -40,21 +40,24 @@ try:
         running_ids = vm_mgr.get_running_vms()
 
         if running_ids:
-            active_vm_id = running_ids[0]
-            display_name = vm_mgr.get_name(active_vm_id)
-            state = "Running " + display_name
-            if len(running_ids) > 1:
-                state += f" • {len(running_ids) - 1} VMs running"
+            active_vm_ids = running_ids[:2]
 
-            guest_os = vm_mgr.get_guest_os(active_vm_id)
+            display_names = [vm_mgr.get_name(vm_id) for vm_id in active_vm_ids]
+
+            state = "Running " + ", ".join(display_names)
+
+            if len(running_ids) > 2:
+                state += f" • {len(running_ids) - 2} VMs running"
+
+            guest_os = vm_mgr.get_guest_os(active_vm_ids[0])
+
             rpc.update(
                 state=state,
                 small_image=LOGOS.get(guest_os),
-                small_text=NAMES.get(guest_os, display_name),
+                small_text=NAMES.get(guest_os, display_names[0]),
             )
         else:
             rpc.update(state="No VMs running")
-
         time.sleep(3)
 except KeyboardInterrupt:
     rpc.clear()
